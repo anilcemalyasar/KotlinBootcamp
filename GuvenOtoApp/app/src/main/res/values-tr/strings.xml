@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GuvenOtoApp</string>
+    <string name="toolbarText">Güven Oto</string>
+    <string name="vartaBatteryD24">D24 Varta Akü</string>
+    <string name="voltage">12V</string>
+    <string name="amper">60Ah</string>
+    <string name="rawAmper">540A</string>
+    <string name="warrantyPeriod">2 Yıl Garanti</string>
+    <string name="delivery">Hızlı Teslimat ve Montaj</string>
+    <string name="installationOffer">Ücretsiz montaj hizmeti sunuyoruz</string>
+    <string name="price">3000.00 TL</string>
+    <string name="addToCart">SEPETE EKLE</string>
+</resources>

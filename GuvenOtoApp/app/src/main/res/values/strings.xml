@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GuvenOtoApp</string>
+    <string name="toolbarText">Güven Oto</string>
+    <string name="vartaBatteryD24">D24 Varta Battery</string>
+    <string name="voltage">12V</string>
+    <string name="amper">60Ah</string>
+    <string name="rawAmper">540A</string>
+    <string name="warrantyPeriod">2 Years Guarantee</string>
+    <string name="delivery">Fast Delivery and Installation</string>
+    <string name="installationOffer">We offer free battery installation service</string>
+    <string name="price">$69.99</string>
+    <string name="addToCart">ADD TO CART</string>
+</resources>
