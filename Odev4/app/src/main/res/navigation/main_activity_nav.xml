@@ -21,10 +21,19 @@
         android:id="@+id/pageAFragment"
         android:name="com.example.odev4.PageAFragment"
         android:label="fragment_page_a"
-        tools:layout="@layout/fragment_page_a" />
+        tools:layout="@layout/fragment_page_a" >
+        <action
+            android:id="@+id/gecisB"
+            app:destination="@id/pageBFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pageXFragment"
         android:name="com.example.odev4.PageXFragment"
         android:label="fragment_page_x"
         tools:layout="@layout/fragment_page_x" />
+    <fragment
+        android:id="@+id/pageBFragment"
+        android:name="com.example.odev4.PageBFragment"
+        android:label="fragment_page_b"
+        tools:layout="@layout/fragment_page_b" />
 </navigation>
