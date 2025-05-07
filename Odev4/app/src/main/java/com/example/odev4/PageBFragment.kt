@@ -19,9 +19,9 @@ class PageBFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentPageBBinding.inflate(inflater, container, false)
 
-//        binding.buttonToPageB.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.gecisB)
-//        }
+        binding.buttonToPageY.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.gecisFromBToY)
+        }
 
         return binding.root
     }

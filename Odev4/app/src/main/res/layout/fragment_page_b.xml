@@ -7,7 +7,7 @@
     tools:context=".PageBFragment">
 
     <Button
-        android:id="@+id/buttonToPageB"
+        android:id="@+id/buttonToPageY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="124dp"

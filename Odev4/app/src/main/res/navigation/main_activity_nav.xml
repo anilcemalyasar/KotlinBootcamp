@@ -30,10 +30,25 @@
         android:id="@+id/pageXFragment"
         android:name="com.example.odev4.PageXFragment"
         android:label="fragment_page_x"
-        tools:layout="@layout/fragment_page_x" />
+        tools:layout="@layout/fragment_page_x" >
+        <action
+            android:id="@+id/gecisFromXToY"
+            app:destination="@id/pageYFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/pageBFragment"
         android:name="com.example.odev4.PageBFragment"
         android:label="fragment_page_b"
-        tools:layout="@layout/fragment_page_b" />
+        tools:layout="@layout/fragment_page_b" >
+        <action
+            android:id="@+id/gecisFromBToY"
+            app:destination="@id/pageYFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/pageYFragment"
+        android:name="com.example.odev4.PageYFragment"
+        android:label="fragment_page_y"
+        tools:layout="@layout/fragment_page_y" />
 </navigation>
