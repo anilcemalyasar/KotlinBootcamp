@@ -23,16 +23,19 @@ class MainPageFragment : Fragment() {
         binding = FragmentMainPageBinding.inflate(inflater, container, false)
 
         val filmsList = ArrayList<Film>()
-        filmsList.add(Film(1, "Django", "django.png", 24))
-        filmsList.add(Film(2, "Interstellar", "interstellar.png", 32))
-        filmsList.add(Film(3, "Inception", "inception.png", 16))
+        filmsList.add(Film(1,"Django","django",24))
+        filmsList.add(Film(2,"Interstellar","interstellar",32))
+        filmsList.add(Film(3,"Inception","inception",16))
+        filmsList.add(Film(4,"The Hateful Eight","thehatefuleight",28))
+        filmsList.add(Film(5,"The Pianist","thepianist",18))
+        filmsList.add(Film(6,"Anadoluda","anadoluda",10))
 
         val filmAdapter = FilmAdapter(requireContext(), filmsList)
         binding.filmsRv.adapter = filmAdapter
 
         // horizontal olarak her satıra 2 card
         binding.filmsRv.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL)
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         return binding.root
     }

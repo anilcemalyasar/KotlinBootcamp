@@ -32,18 +32,17 @@ class FilmAdapter(var mContext: Context, var filmsList : List<Film>):
     ) {
         val film : Film  = filmsList.get(position) // 0 1 2
         val t = holder.design
-        t.imageView.setImageResource(
+        t.imageViewFilm.setImageResource(
             mContext.resources.getIdentifier(film.image, "drawable", mContext.packageName)
         )
 
-        t.textViewPrice.text = "24"
-//        t.textViewPrice.text = "${film.price} ₺"
-        t.cardViewRow.setOnClickListener {
+        t.textViewFiyat.text = "${film.price} ₺"
+        t.cardViewFilm.setOnClickListener {
             val gecis = MainPageFragmentDirections.detailGecis(film = film)
             Navigation.findNavController(it).navigate(gecis)
         }
 
-        t.buttonCart.setOnClickListener {
+        t.buttonSepet.setOnClickListener {
             Snackbar.make(it, "${film.name} sepete eklendi", Snackbar.LENGTH_SHORT).show()
         }
     }

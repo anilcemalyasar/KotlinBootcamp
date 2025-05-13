@@ -6,15 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import com.example.kisileruygulamasi.R
 import com.example.kisileruygulamasi.databinding.FragmentKisiDetayBinding
 import com.example.kisileruygulamasi.databinding.FragmentMainPageBinding
+import com.example.kisileruygulamasi.ui.viewmodel.KisiDetayViewModel
 
 class KisiDetayFragment : Fragment() {
 
     private lateinit var binding: FragmentKisiDetayBinding
+    private lateinit var viewModel: KisiDetayViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +36,16 @@ class KisiDetayFragment : Fragment() {
             val kisi_adi = binding.editTextKisiAdDetay.text.toString()
             val kisi_tel = binding.editTextKisiTelDetay.text.toString()
 
-            guncelle(gelenKisi.kisi_id, kisi_adi, kisi_tel)
+            viewModel.guncelle(gelenKisi.kisi_id, kisi_adi, kisi_tel)
         }
         return binding.root
     }
 
-    fun guncelle(kisi_id: Int, kisi_ad: String, kisi_tel: String) {
-        Log.e("Kişi Güncelle", "$kisi_id - $kisi_ad - $kisi_tel")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel : KisiDetayViewModel by viewModels()
+        viewModel = tempViewModel
     }
+
 
 }

@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kisileruygulamasi.data.entity.Kisi
 import com.example.kisileruygulamasi.databinding.CardTasarimBinding
 import com.example.kisileruygulamasi.ui.fragments.MainPageFragmentDirections
+import com.example.kisileruygulamasi.ui.viewmodel.MainPageViewModel
+import com.example.kisileruygulamasi.utils.gecisYap
 import com.google.android.material.snackbar.Snackbar
 
-class KisilerAdapter(var mContext: Context, var kisilerListesi: List<Kisi>)
+class KisilerAdapter(var mContext: Context, var kisilerListesi: List<Kisi>, var viewModel: MainPageViewModel)
     : RecyclerView.Adapter<KisilerAdapter.CardDesignHolder>(){
 
     // bu sınıf kart tasarımını temsil ediyor
@@ -40,13 +42,14 @@ class KisilerAdapter(var mContext: Context, var kisilerListesi: List<Kisi>)
 
         t.cardViewRow.setOnClickListener {
             val gecis = MainPageFragmentDirections.kisiDetayGecis(kisi = kisi)
-            Navigation.findNavController(it).navigate(gecis)
+//            Navigation.findNavController(it).navigate(gecis)
+            Navigation.gecisYap(it, gecis)
         }
 
         t.imageViewCancel.setOnClickListener {
             Snackbar.make(it, "${kisi.kisi_ad} silinsin mi?", Snackbar.LENGTH_SHORT)
                 .setAction("EVET") {
-                    sil(kisi.kisi_id)
+                    viewModel.sil(kisi.kisi_id)
                 }.show()
         }
     }
@@ -54,9 +57,5 @@ class KisilerAdapter(var mContext: Context, var kisilerListesi: List<Kisi>)
     // kaç kart listeleneceğini belirlediğimiz fonksiyon
     override fun getItemCount(): Int {
         return kisilerListesi.size
-    }
-
-    fun sil(kisi_id: Int) {
-        Log.e("Kişi Sil", kisi_id.toString())
     }
 }
