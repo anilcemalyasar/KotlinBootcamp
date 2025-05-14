@@ -20,7 +20,14 @@ class KisilerDataSource(var kisilerDao: KisilerDao) {
     }
 
     suspend fun sil(kisi_id:Int){
-        Log.e("Kişi Sil",kisi_id.toString())
+//        Log.e("Kişi Sil",kisi_id.toString())
+        val kisi = Kisiler(kisi_id, "ece", "1111")
+        kisilerDao.kayitSil(kisi)
+    }
+
+    suspend fun kayitKontrol(kisi_ad: String) {
+        val sonuc = kisilerDao.kayitKontrol(kisi_ad)
+        Log.e("İsmi ${kisi_ad} olan kişi sayısı", sonuc.toString())
     }
 
     suspend fun kisileriYukle() : List<Kisiler> = withContext(Dispatchers.IO) {
@@ -37,10 +44,12 @@ class KisilerDataSource(var kisilerDao: KisilerDao) {
     }
 
     suspend fun ara(aramaKelimesi:String) : List<Kisiler> = withContext(Dispatchers.IO) {
-        val liste = ArrayList<Kisiler>()
-        val k1 = Kisiler(1,"Ahmet","1111")
-        liste.add(k1)
-
-        return@withContext  liste
+        val liste : List<Kisiler> = kisilerDao.kisiArama(aramaKelimesi)
+        return@withContext liste
+//        val liste = ArrayList<Kisiler>()
+//        val k1 = Kisiler(1,"Ahmet","1111")
+//        liste.add(k1)
+//
+//        return@withContext  liste
     }
 }
