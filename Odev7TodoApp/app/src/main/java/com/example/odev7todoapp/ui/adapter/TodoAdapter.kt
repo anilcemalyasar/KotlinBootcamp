@@ -10,6 +10,7 @@ import com.example.odev7todoapp.data.entity.Todo
 import com.example.odev7todoapp.databinding.CardDesignBinding
 import com.example.odev7todoapp.ui.fragments.MainPageFragment
 import com.example.odev7todoapp.ui.fragments.MainPageFragmentDirections
+import com.example.odev7todoapp.utils.doNavigate
 import com.google.android.material.snackbar.Snackbar
 
 class TodoAdapter(var mContext: Context, var todoList: List<Todo>)
@@ -39,7 +40,8 @@ class TodoAdapter(var mContext: Context, var todoList: List<Todo>)
 
         t.cardViewRow.setOnClickListener {
             val gecis = MainPageFragmentDirections.detayGecis(todo = todo)
-            Navigation.findNavController(it).navigate(gecis)
+//            Navigation.findNavController(it).navigate(gecis) eski kod
+            Navigation.doNavigate(it, gecis)
             Log.e("Detay Geçiş", "${todo.name} kartı detay sayfasına gönderildi")
         }
 
