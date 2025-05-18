@@ -10,10 +10,13 @@ import com.example.odev7todoapp.data.entity.Todo
 import com.example.odev7todoapp.databinding.CardDesignBinding
 import com.example.odev7todoapp.ui.fragments.MainPageFragment
 import com.example.odev7todoapp.ui.fragments.MainPageFragmentDirections
+import com.example.odev7todoapp.ui.viewmodel.MainPageViewModel
 import com.example.odev7todoapp.utils.doNavigate
 import com.google.android.material.snackbar.Snackbar
 
-class TodoAdapter(var mContext: Context, var todoList: List<Todo>)
+class TodoAdapter(var mContext: Context,
+                  var todoList: List<Todo>,
+                  var viewModel: MainPageViewModel)
     : RecyclerView.Adapter<TodoAdapter.CardDesignHolder>(){
 
     inner class CardDesignHolder(var design: CardDesignBinding) : RecyclerView.ViewHolder(design.root)

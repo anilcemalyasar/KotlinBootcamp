@@ -10,4 +10,9 @@ class TodoRepository(var todoDataSource: TodoDataSource) {
 
     suspend fun getAllTodos() : List<Todo> = todoDataSource.getAllTodos()
 
+    suspend fun deleteTodo(id : Int) = todoDataSource.deleteTodo(id)
+
+    suspend fun updateTodo(id: Int, name: String, start_date: String, end_date: String)
+        = todoDataSource.updateTodo(id, name, start_date, end_date)
+
 }

@@ -14,4 +14,12 @@ class TodoDataSource(var todoDao: TodoDao) {
     suspend fun getAllTodos() : List<Todo> = withContext(Dispatchers.IO) {
         return@withContext todoDao.getAllTodos()
     }
+
+    suspend fun deleteTodo(id: Int) {
+        todoDao.deleteTodo(Todo(id, "todo", "todo", "todo"))
+    }
+
+    suspend fun updateTodo(id: Int, name: String, start_date: String, end_date: String) {
+        todoDao.updateTodo(Todo(id, name, start_date, end_date))
+    }
 }
