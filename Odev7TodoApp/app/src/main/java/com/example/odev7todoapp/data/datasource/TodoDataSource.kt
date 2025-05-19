@@ -22,4 +22,8 @@ class TodoDataSource(var todoDao: TodoDao) {
     suspend fun updateTodo(id: Int, name: String, start_date: String, end_date: String) {
         todoDao.updateTodo(Todo(id, name, start_date, end_date))
     }
+
+    suspend fun searchTodo(searchWord : String) : List<Todo> = withContext(Dispatchers.IO) {
+        todoDao.searchTodo(searchWord)
+    }
 }

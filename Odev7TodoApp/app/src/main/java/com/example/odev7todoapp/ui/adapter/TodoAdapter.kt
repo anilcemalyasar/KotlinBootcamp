@@ -43,15 +43,16 @@ class TodoAdapter(var mContext: Context,
 
         t.cardViewRow.setOnClickListener {
             val gecis = MainPageFragmentDirections.detayGecis(todo = todo)
-//            Navigation.findNavController(it).navigate(gecis) eski kod
-            Navigation.doNavigate(it, gecis)
+            Navigation.findNavController(it).navigate(gecis) // eski kod
+//            Navigation.doNavigate(it, gecis)
             Log.e("Detay Geçiş", "${todo.name} kartı detay sayfasına gönderildi")
         }
 
         t.imageViewDelete.setOnClickListener {
             Snackbar.make(it, "${todo.name} kartı silinsin mi?", Snackbar.LENGTH_SHORT)
                 .setAction("EVET") {
-                    Log.e("Todo Sil", todo.id.toString())
+//                    Log.e("Todo Sil", todo.id.toString())
+                    viewModel.deleteTodo(todo.id)
                 }.show()
         }
     }

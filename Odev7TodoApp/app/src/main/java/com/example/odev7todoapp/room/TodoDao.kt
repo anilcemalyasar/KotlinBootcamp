@@ -22,6 +22,7 @@ interface TodoDao {
     @Delete
     suspend fun deleteTodo(todo: Todo)
 
-
+    @Query("SELECT * FROM toDos WHERE name LIKE '%' || :searchWord || '%'")
+    suspend fun searchTodo(searchWord: String) : List<Todo>
 
 }

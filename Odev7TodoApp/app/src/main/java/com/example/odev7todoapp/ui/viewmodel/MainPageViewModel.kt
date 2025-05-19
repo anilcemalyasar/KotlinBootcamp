@@ -33,5 +33,10 @@ class MainPageViewModel @Inject constructor(var todoRepository: TodoRepository) 
         }
     }
 
+    fun searchTodo(searchWord: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            todoList.value = todoRepository.searchTodo(searchWord)
+        }
+    }
 
 }

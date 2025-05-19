@@ -15,4 +15,6 @@ class TodoRepository(var todoDataSource: TodoDataSource) {
     suspend fun updateTodo(id: Int, name: String, start_date: String, end_date: String)
         = todoDataSource.updateTodo(id, name, start_date, end_date)
 
+    suspend fun searchTodo(searchWord: String) = todoDataSource.searchTodo(searchWord)
+
 }
