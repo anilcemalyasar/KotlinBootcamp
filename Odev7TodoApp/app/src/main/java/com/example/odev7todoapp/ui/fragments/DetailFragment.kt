@@ -34,13 +34,11 @@ class DetailFragment : Fragment() {
         binding.editInputTodoEnd.setText(incomingTodo.endDate)
 
         binding.buttonUpdate.setOnClickListener {
-            binding.editTextTodoId.setText(incomingTodo.id.toString())
-            binding.editInputTodoName.setText(incomingTodo.name)
-            binding.editTextTodoStart.setText(incomingTodo.startDate)
-            binding.editInputTodoEnd.setText(incomingTodo.endDate)
 
-//            viewModel.updateTodo(binding.editTextTodoId.text.toString().toInt(),
-//                                 binding.editTextTodoStart.text = )
+            viewModel.updateTodo(binding.editTextTodoId.text.toString().toInt(),
+                                 binding.editInputTodoName.text.toString(),
+                                 binding.editTextTodoStart.text.toString(),
+                                 binding.editInputTodoEnd.text.toString())
         }
         return binding.root
 

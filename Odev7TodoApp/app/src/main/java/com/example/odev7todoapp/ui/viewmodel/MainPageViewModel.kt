@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.odev7todoapp.data.entity.Todo
 import com.example.odev7todoapp.data.repo.TodoRepository
+import com.example.odev7todoapp.utils.convertDateToSqlFormat
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +24,10 @@ class MainPageViewModel @Inject constructor(var todoRepository: TodoRepository) 
     fun getAllTodos() {
         CoroutineScope(Dispatchers.Main).launch {
             todoList.value = todoRepository.getAllTodos()
+//            for (todo in todoList.value) {
+//                todo.startDate =  todo.startDate.convertDateToSqlFormat(todo.startDate, "yyyy-MM-dd", "dd.MM.yyyy")
+//                todo.endDate =  todo.endDate.convertDateToSqlFormat(todo.endDate, "yyyy-MM-dd", "dd.MM.yyyy")
+//            }
         }
     }
 
