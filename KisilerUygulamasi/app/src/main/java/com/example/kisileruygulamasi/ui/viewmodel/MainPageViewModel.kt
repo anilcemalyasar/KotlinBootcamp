@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kisileruygulamasi.data.entity.Kisi
+import com.example.kisileruygulamasi.data.entity.Kisiler
 import com.example.kisileruygulamasi.data.repo.KisilerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainPageViewModel @Inject constructor(var kisilerRepository: KisilerRepository) : ViewModel() {
 
-    var kisilerListesi = MutableLiveData<List<Kisi>>()
+    var kisilerListesi = MutableLiveData<List<Kisiler>>()
 
     init {
         kisileriYukle()

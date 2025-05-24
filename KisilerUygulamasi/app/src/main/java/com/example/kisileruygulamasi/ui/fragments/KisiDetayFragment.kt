@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.kisileruygulamasi.R
 import com.example.kisileruygulamasi.databinding.FragmentKisiDetayBinding
 import com.example.kisileruygulamasi.databinding.FragmentMainPageBinding
+import com.example.kisileruygulamasi.ui.fragment.KisiDetayFragmentArgs
 import com.example.kisileruygulamasi.ui.viewmodel.KisiDetayViewModel
 
 class KisiDetayFragment : Fragment() {
@@ -29,12 +30,12 @@ class KisiDetayFragment : Fragment() {
         val bundle : KisiDetayFragmentArgs by navArgs()
         val gelenKisi = bundle.kisi
 
-        binding.editTextKisiAdDetay.setText(gelenKisi.kisi_ad)
-        binding.editTextKisiTelDetay.setText(gelenKisi.kisi_tel)
+        binding.editTextKisiAd.setText(gelenKisi.kisi_ad)
+        binding.editTextKisiTel.setText(gelenKisi.kisi_tel)
 
         binding.buttonGuncelle.setOnClickListener {
-            val kisi_adi = binding.editTextKisiAdDetay.text.toString()
-            val kisi_tel = binding.editTextKisiTelDetay.text.toString()
+            val kisi_adi = binding.editTextKisiAd.text.toString()
+            val kisi_tel = binding.editTextKisiTel.text.toString()
 
             viewModel.guncelle(gelenKisi.kisi_id, kisi_adi, kisi_tel)
         }

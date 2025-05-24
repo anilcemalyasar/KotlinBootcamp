@@ -1,40 +1,54 @@
 package com.example.kisileruygulamasi.data.datasource
 
 import android.util.Log
-import com.example.kisileruygulamasi.data.entity.Kisi
+import com.example.kisileruygulamasi.data.entity.Kisiler
+import com.example.kisileruygulamasi.retrofit.KisilerDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class KisilerDataSource {
-
-    // suspend async mantığı gibi, multi threading db işlemlerinde
-    suspend fun kaydet(kisi_ad: String, kisi_tel: String) {
-        Log.e("Kişi kaydet", "$kisi_ad - $kisi_tel")
+class KisilerDataSource(var kisilerDao: KisilerDao) {
+    suspend fun kaydet(kisi_ad: String,kisi_tel: String){
+//        Log.e("Kişi Kaydet","$kisi_ad - $kisi_tel")
+        val crudCevap = kisilerDao.kaydet(kisi_ad,kisi_tel)
+        Log.e("Kişi Kaydet","Success : ${crudCevap.success} - Message : ${crudCevap.message}")
     }
 
-    suspend fun guncelle(kisi_id: Int, kisi_ad: String, kisi_tel: String) {
-        Log.e("Kişi Güncelle", "$kisi_id - $kisi_ad - $kisi_tel")
+    suspend fun guncelle(kisi_id:Int,kisi_ad: String,kisi_tel: String){
+//        Log.e("Kişi Güncelle","$kisi_id - $kisi_ad - $kisi_tel")
+//        val guncellenenKisiler = Kisiler(kisi_id, kisi_ad, kisi_tel)
+        val crudCevap = kisilerDao.guncelle(kisi_id,kisi_ad,kisi_tel)
+        Log.e("Kişi Güncelle","Success : ${crudCevap.success} - Message : ${crudCevap.message}")
     }
 
-    suspend fun sil(kisi_id: Int) {
-        Log.e("Kişi Sil", kisi_id.toString())
+    suspend fun sil(kisi_id:Int){
+        val crudCevap = kisilerDao.sil(kisi_id)
+        Log.e("Kişi Sil","Success : ${crudCevap.success} - Message : ${crudCevap.message}")
     }
 
-    // IO veri tabanına yakın olan kısımlarda kullandığımız
-    suspend fun kisileriYukle() : List<Kisi> = withContext(Dispatchers.IO) {
-        val liste = ArrayList<Kisi>()
-        liste.add(Kisi(1, "Ahmet", "1111"))
-        liste.add(Kisi(2, "Beyza", "2222"))
-        liste.add(Kisi(3, "Zeynep", "3333"))
+//    suspend fun kayitKontrol(kisi_ad: String) {
+//        val sonuc = kisilerDao.kayitKontrol(kisi_ad)
+//        Log.e("İsmi ${kisi_ad} olan kişi sayısı", sonuc.toString())
+//    }
 
-        return@withContext liste
+    suspend fun kisileriYukle() : List<Kisiler> = withContext(Dispatchers.IO) {
+        return@withContext kisilerDao.kisileriYukle().kisiler
+//        val liste = ArrayList<Kisiler>()
+//        val k1 = Kisiler(1,"Ahmet","1111")
+//        val k2 = Kisiler(2,"Zeynep","2222")
+//        val k3 = Kisiler(3,"Beyza","3333")
+//        liste.add(k1)
+//        liste.add(k2)
+//        liste.add(k3)
+//
+//        return@withContext  liste
     }
 
-    // IO veri tabanına yakın olan kısımlarda kullandığımız
-    suspend fun ara(aramaKelimesi: String) : List<Kisi> = withContext(Dispatchers.IO) {
-        val liste = ArrayList<Kisi>()
-        liste.add(Kisi(1, "Ahmet", "1111"))
-
-        return@withContext liste
+    suspend fun ara(aramaKelimesi:String) : List<Kisiler> = withContext(Dispatchers.IO) {
+        return@withContext kisilerDao.ara(aramaKelimesi).kisiler
+//        val liste = ArrayList<Kisiler>()
+//        val k1 = Kisiler(1,"Ahmet","1111")
+//        liste.add(k1)
+//
+//        return@withContext  liste
     }
 }

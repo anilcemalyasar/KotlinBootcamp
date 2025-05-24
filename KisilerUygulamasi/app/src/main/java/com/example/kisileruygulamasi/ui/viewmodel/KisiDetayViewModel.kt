@@ -10,12 +10,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class KisiDetayViewModel @Inject constructor(var kisilerRepository: KisilerRepository) : ViewModel() {
+class KisiDetayViewModel @Inject constructor(var kisilerRepository:KisilerRepository) : ViewModel() {
 
-
-    fun guncelle(kisi_id: Int, kisi_ad: String, kisi_tel: String) {
+    fun guncelle(kisi_id:Int,kisi_ad: String,kisi_tel: String){
         CoroutineScope(Dispatchers.Main).launch {
-            kisilerRepository.guncelle(kisi_id, kisi_ad, kisi_tel)
+            kisilerRepository.guncelle(kisi_id,kisi_ad,kisi_tel)
         }
     }
 }

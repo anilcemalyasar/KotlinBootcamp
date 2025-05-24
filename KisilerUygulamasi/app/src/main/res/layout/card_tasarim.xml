@@ -7,18 +7,18 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewRow"
+        android:id="@+id/cardViewSatir"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="8dp"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageViewCancel"
+                android:id="@+id/imageViewSil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -26,10 +26,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5"
-                app:srcCompat="@drawable/baseline_cancel_24" />
+                app:srcCompat="@drawable/sil_resim" />
 
             <TextView
-                android:id="@+id/textViewKisiAdi"
+                android:id="@+id/textViewKisiAd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -47,7 +47,8 @@
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewKisiAdi" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewKisiAd" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

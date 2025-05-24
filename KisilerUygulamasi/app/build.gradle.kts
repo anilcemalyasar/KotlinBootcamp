@@ -10,9 +10,10 @@ android {
     namespace = "com.example.kisileruygulamasi"
     compileSdk = 35
 
-    buildFeatures {
+    buildFeatures{
         viewBinding = true
     }
+
     defaultConfig {
         applicationId = "com.example.kisileruygulamasi"
         minSdk = 24
@@ -42,7 +43,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -56,6 +56,12 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.5.1")
     implementation("androidx.activity:activity-ktx:1.6.1")
+
     implementation("com.google.dagger:hilt-android:2.56")
     kapt("com.google.dagger:hilt-android-compiler:2.56")
+
+    implementation("com.squareup.retrofit2:retrofit:2.6.0")
+    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.5.0")
+
 }
