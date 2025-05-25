@@ -2,6 +2,7 @@ package com.example.finalproject.retrofit
 
 import com.example.finalproject.data.entity.CRUDResult
 import com.example.finalproject.data.entity.FoodResult
+import com.example.finalproject.data.entity.ShoppingCartFoodResult
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -25,4 +26,8 @@ interface FoodDao {
     @FormUrlEncoded
     suspend fun sil(@Field("sepet_yemek_id") sepet_yemek_id: String,
                     @Field("kullanici_adi") kullanici_adi: String) : CRUDResult
+
+
+    @GET("yemekler/sepettekiYemekleriGetir.php")
+    suspend fun sepettekiYemekleriGetir(@Field("kullanici_adi") kullanici_adi: String) : ShoppingCartFoodResult
 }

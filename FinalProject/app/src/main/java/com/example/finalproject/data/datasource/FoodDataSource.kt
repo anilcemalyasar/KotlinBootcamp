@@ -2,6 +2,7 @@ package com.example.finalproject.data.datasource
 
 import android.util.Log
 import com.example.finalproject.data.entity.Food
+import com.example.finalproject.data.entity.ShoppingCartFood
 import com.example.finalproject.retrofit.FoodDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -20,6 +21,10 @@ class FoodDataSource(var foodDao: FoodDao) {
 
     suspend fun yemekleriYukle() : List<Food> = withContext(Dispatchers.IO) {
         return@withContext foodDao.yemekleriYukle().yemekler
+    }
+
+    suspend fun sepettekiYemekleriGetir(kullanici_adi: String) : List<ShoppingCartFood> = withContext(Dispatchers.IO) {
+        return@withContext foodDao.sepettekiYemekleriGetir(kullanici_adi).sepet_yemekler
     }
 
 
