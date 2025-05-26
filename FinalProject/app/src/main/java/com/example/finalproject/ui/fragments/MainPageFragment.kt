@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentMainPageBinding
+import com.example.finalproject.ui.adapter.FoodAdapter
 import com.example.finalproject.ui.viewmodel.MainPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,14 +30,21 @@ class MainPageFragment : Fragment() {
             // adapter kodunu yazacağız
         }
 
+        viewModel.foodList.observe(viewLifecycleOwner) {
+            val foodAdapter = FoodAdapter(requireContext(), it, viewModel)
+            binding.foodsRv.adapter = foodAdapter
+        }
+
+        binding.foodsRv.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
 
         return binding.root
     }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        val tempViewModel: MainPageViewModel by viewM()
-//        viewModel = tempViewModel
-//    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: MainPageViewModel by viewModels()
+        viewModel = tempViewModel
+    }
 }

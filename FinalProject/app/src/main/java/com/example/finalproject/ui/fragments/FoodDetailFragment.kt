@@ -20,6 +20,7 @@ class FoodDetailFragment : Fragment() {
         binding = FragmentFoodDetailBinding.inflate(inflater, container, false)
 
 
+
         return binding.root
     }
 
