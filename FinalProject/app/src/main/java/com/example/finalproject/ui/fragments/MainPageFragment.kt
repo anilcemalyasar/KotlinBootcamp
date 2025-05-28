@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentMainPageBinding
@@ -27,17 +28,17 @@ class MainPageFragment : Fragment() {
         binding = FragmentMainPageBinding.inflate(inflater, container, false)
 
         viewModel.foodList.observe(viewLifecycleOwner) {
-            // adapter kodunu yazacağız
-        }
-
-        viewModel.foodList.observe(viewLifecycleOwner) {
             val foodAdapter = FoodAdapter(requireContext(), it, viewModel)
             binding.foodsRv.adapter = foodAdapter
         }
 
+        binding.ivShoppingCart.setOnClickListener {
+            val gecis = MainPageFragmentDirections.sepetGecis()
+            Navigation.findNavController(it).navigate(gecis)
+        }
+
         binding.foodsRv.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
 
         return binding.root
     }

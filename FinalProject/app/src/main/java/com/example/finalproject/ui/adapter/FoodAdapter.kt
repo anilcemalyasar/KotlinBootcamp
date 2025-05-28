@@ -3,10 +3,12 @@ package com.example.finalproject.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.finalproject.data.entity.Food
 import com.example.finalproject.databinding.CardDesignBinding
+import com.example.finalproject.ui.fragments.MainPageFragmentDirections
 import com.example.finalproject.ui.viewmodel.MainPageViewModel
 
 class FoodAdapter(var mContext: Context,
@@ -41,6 +43,12 @@ class FoodAdapter(var mContext: Context,
         Glide.with(mContext)
             .load(imageUrl)
             .into(t.foodImage)
+
+        t.cardViewRow.setOnClickListener {
+            val gecis = MainPageFragmentDirections.detayGecis(food)
+            Navigation.findNavController(it).navigate(gecis)
+
+        }
     }
 
     override fun getItemCount(): Int {

@@ -7,6 +7,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface FoodDao {
 
@@ -28,6 +29,13 @@ interface FoodDao {
                     @Field("kullanici_adi") kullanici_adi: String) : CRUDResult
 
 
-    @GET("yemekler/sepettekiYemekleriGetir.php")
-    suspend fun sepettekiYemekleriGetir(@Field("kullanici_adi") kullanici_adi: String) : ShoppingCartFoodResult
+    @POST("yemekler/sepettekiYemekleriGetir.php")
+    @FormUrlEncoded
+    suspend fun sepettekiYemekleriGetir(@Field("kullanici_adi") kullanici_adi: String): ShoppingCartFoodResult
+
+    @POST("yemekler/sepettenYemekSil.php")
+    @FormUrlEncoded
+    suspend fun sepettenYemekSil(@Field("sepet_yemek_id") sepet_yemek_id: Int,
+                                 @Field("kullanici_adi") kullanici_adi: String) : CRUDResult
+
 }

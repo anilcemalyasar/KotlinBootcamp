@@ -19,6 +19,11 @@ class FoodDataSource(var foodDao: FoodDao) {
         Log.e("Sepete Yemek Ekleme", "Success : ${crudResult.success} - Message : ${crudResult.message}")
     }
 
+    suspend fun sepettenYemekSil(sepet_yemek_id: Int, kullanici_adi: String) {
+        val crudResult = foodDao.sepettenYemekSil(sepet_yemek_id, kullanici_adi)
+        Log.e("Sepetten Yemek Silme", "Success : ${crudResult.success} - Message : ${crudResult.message}")
+    }
+
     suspend fun yemekleriYukle() : List<Food> = withContext(Dispatchers.IO) {
         return@withContext foodDao.yemekleriYukle().yemekler
     }
