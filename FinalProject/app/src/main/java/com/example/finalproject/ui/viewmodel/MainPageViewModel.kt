@@ -24,4 +24,14 @@ class MainPageViewModel @Inject constructor(var foodRepository: FoodRepository) 
             foodList.value = foodRepository.yemekleriYukle()
         }
     }
+
+    fun ara(aramaKelimesi: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val allFoods : List<Food> = foodRepository.yemekleriYukle()
+            val filteredFoods = allFoods.filter { food ->
+                food.yemek_adi.contains(aramaKelimesi, ignoreCase = true)
+            }
+            foodList.value = filteredFoods
+        }
+    }
 }

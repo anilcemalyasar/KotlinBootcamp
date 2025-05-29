@@ -5,13 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentFoodDetailBinding
 import com.example.finalproject.ui.viewmodel.FoodDetailViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.navigation.findNavController
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class FoodDetailFragment : Fragment() {
@@ -28,6 +33,10 @@ class FoodDetailFragment : Fragment() {
 
         val bundle : FoodDetailFragmentArgs by navArgs()
         val incomingFood = bundle.yemek
+
+        // Puanını rastgele seçme
+        val randomRating = (2..5).random() + listOf(0f, 0.5f).random()
+        binding.ratingBar.rating = randomRating
 
         binding.tvFoodName.text = incomingFood.yemek_adi
         binding.tvFoodPrice.text = "₺ ${incomingFood.yemek_fiyat}"
@@ -61,10 +70,23 @@ class FoodDetailFragment : Fragment() {
 
         // sepete ekle butonuna basıldığında web servis tetiklenecek
         binding.btnAddToCart.setOnClickListener {
+            val foodQuantity : Int = binding.tvFoodQuantity.text.toString().toInt()
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("İşlem Başarılı!")
+                .setMessage("${foodQuantity} adet ${incomingFood.yemek_adi} başarıyla sepete eklenmiştir.")
+                .setPositiveButton("Sepete Git") { d, i ->
+                    val gecis = FoodDetailFragmentDirections.foodDetailToShoppingCart()
+                    it.findNavController().navigate(gecis)
+                }
+                .setNegativeButton("Alışverişe Devam Et"){ d, i ->
+                    val detayToMainPageGecis = FoodDetailFragmentDirections.foodDetailToMainPage()
+                    it.findNavController().navigate(detayToMainPageGecis)
+                }
+                .show()
             viewModel.sepeteYemekEkle(incomingFood.yemek_adi,
                                       incomingFood.yemek_resim_adi,
                                       incomingFood.yemek_fiyat,
-                                      binding.tvFoodQuantity.text.toString().toInt(),
+                                      foodQuantity,
                                       "anil_cemal_yasar_deneme")
         }
 

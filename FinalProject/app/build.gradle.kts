@@ -14,6 +14,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     defaultConfig {
@@ -68,5 +69,6 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.5.0")
 
     implementation("com.github.bumptech.glide:glide:4.13.2")
+    implementation("com.github.qamarelsafadi:CurvedBottomNavigation:0.1.3")
 
 }

@@ -1,6 +1,7 @@
 package com.example.finalproject.ui.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import com.example.finalproject.data.entity.Food
 import com.example.finalproject.data.entity.ShoppingCartFood
 import com.example.finalproject.databinding.ShoppingItemCardDesignBinding
 import com.example.finalproject.ui.viewmodel.ShoppingCartViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class ShoppingCartAdapter(var mContext: Context,
                           var shoppingCartFoodList: List<ShoppingCartFood>,
@@ -46,8 +48,20 @@ class ShoppingCartAdapter(var mContext: Context,
             var totalItemPrice : Int = food.yemek_fiyat.toInt() * food.yemek_siparis_adet.toInt()
             t.tvShoppingCartFoodTotal.text = "₺ ${totalItemPrice}"
 
-            t.icDelete.setOnClickListener {
-                viewModel.sepettenYemekSilme(food.sepet_yemek_id)
+            t.icDelete.setOnClickListener { view ->
+                Snackbar.make(view, "${food.yemek_adi} sepetten silinsin mi?", Snackbar.LENGTH_LONG)
+                    .setAction("Evet") {
+                        viewModel.sepettenYemekSilme(food.sepet_yemek_id)
+                        Snackbar.make(view, "${food.yemek_adi} sepetten başarıyla silindi.",
+                            Snackbar.LENGTH_SHORT)
+                            .setBackgroundTint(Color.WHITE)
+                            .setTextColor(Color.BLACK)
+                            .show()
+                    }
+                    .setBackgroundTint(Color.WHITE)
+                    .setTextColor(Color.BLACK)
+                    .setActionTextColor(Color.RED)
+                    .show()
             }
 
         }

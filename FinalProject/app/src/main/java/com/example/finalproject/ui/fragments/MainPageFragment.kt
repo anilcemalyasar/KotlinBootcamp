@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentMainPageBinding
@@ -32,13 +34,21 @@ class MainPageFragment : Fragment() {
             binding.foodsRv.adapter = foodAdapter
         }
 
-        binding.ivShoppingCart.setOnClickListener {
-            val gecis = MainPageFragmentDirections.sepetGecis()
-            Navigation.findNavController(it).navigate(gecis)
-        }
-
         binding.foodsRv.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
+        // Search View Android Widget olanı kullanacağız
+//        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener{
+//            override fun onQueryTextChange(newText: String): Boolean {//Harf girdikçe ve sildikçe
+//                viewModel.ara(newText)
+//                return true
+//            }
+//
+//            override fun onQueryTextSubmit(query: String): Boolean {//Ara buttonuna basılınca
+//                viewModel.ara(query)
+//                return true
+//            }
+//        })
 
         return binding.root
     }
@@ -48,4 +58,10 @@ class MainPageFragment : Fragment() {
         val tempViewModel: MainPageViewModel by viewModels()
         viewModel = tempViewModel
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        viewModel.yemekleriYukle()
+//    }
+
 }

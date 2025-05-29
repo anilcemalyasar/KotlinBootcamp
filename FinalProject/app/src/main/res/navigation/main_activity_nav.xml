@@ -25,6 +25,12 @@
         <argument
             android:name="yemek"
             app:argType="com.example.finalproject.data.entity.Food" />
+        <action
+            android:id="@+id/foodDetailToShoppingCart"
+            app:destination="@id/shoppingCartFragment" />
+        <action
+            android:id="@+id/foodDetailToMainPage"
+            app:destination="@id/mainPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppingCartFragment"
